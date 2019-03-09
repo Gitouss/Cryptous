@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply from: '../android_commons.gradle'
+
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0].processResources.manifestFile
+        resourcePackageName "com.doplgangr.secrecy"
+    }
+}
+
+dependencies {
+    compile project(':libraries:aFileChooser')
+    compile 'commons-io:commons-io:2.4'
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:recyclerview-v7:21.0.3'
+    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.github.chrisbanes.photoview:library:1.2.3'
+    compile 'com.path:android-priority-jobqueue:1.1.2'
+    compile 'de.greenrobot:eventbus:2.2.0'
+    compile 'com.google.protobuf:protobuf-java:2.6.0'
+    compile 'com.madgag.spongycastle:prov:1.51.0.0'
+    compile 'com.github.TakWolf:Android-Lock9View:0.0.11'
+}
+
+android {
+    defaultConfig {
+        applicationId "com.doplgangr.cryptous"
+        versionCode 60
+        versionName "0.6.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
